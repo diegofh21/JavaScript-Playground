@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Pokédex</title>
+
+	<link rel="stylesheet" href="css/bootstrap-grid.min.css">
+	<link rel="stylesheet" href="css/bootstrap-reboot.min.css">
+	<link rel="stylesheet" href="css/bootstrap-utilities.min.css">
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="css/main.css">
+
+	<link rel="shortcut icon" href="img/pokeball-pixelart.ico" type="image/x-icon">
+</head>
+
+<body onload="mode(); datos()">
+
+	<nav id='navbar' class="navbar">
+		<div class="container-fluid">
+			<a id="dark-label" class="navbar-brand">
+				<img src="img/icons8-pokeball-48.png" alt="" width="50" height="50" class="d-inline-block">
+				<span id="dark-label">Pokédex</span>
+			</a>
+			<form class="d-flex">
+
+				<div class="theme-switch-wrapper">
+					<em id="dark-label">Tema Claro</em>
+					<label class="ms-2 theme-switch" for="checkbox">
+						<input type="checkbox" id="checkbox" />
+						<div class="slider round"></div>
+					</label>
+					<em id="dark-label">Tema Oscuro</em>
+				</div>
+			</form>
+		</div>
+	</nav>
+	<div class="container-fluid mb-4">
+		<div class="row">
+			<img src="img/pokedex-2.png" alt="Pokedex" style="width: 15% !important;" class="m-auto img-fluid">
+			<h4 class="text-center mt-3">¡Haz click en la pokedex para escanear y descubrir nuevos pokémon!</h4>
+		</div>
+
+		<div class="container mt-5" >
+			<div class="row" id="pokeData">
+				<!-- <div class="col-sm-3">
+					<a href="" class="pokemon">
+						<img src="img/bulbasaur.png" alt="" class="bg-pokemon rounded-3">
+					</a>
+					<h6 class="mt-1">N° 001</h6>
+					<h4 class="mb-3">Bulbasaur</h4>
+					<p><span class="bg-grass text-dark rounded-3 pt-1 pb-1 ps-3 pe-3">Planta</span> <span
+							class="bg-poison text-light rounded-3 pt-1 pb-1 ps-3 pe-3">Veneno</span></p>
+				</div> -->
+			</div>
+		</div>
+
+		
+		<!-- <div class="col-sm-3">
+			<a href="" class="pokemon">
+				<img src="img/ivysaur.png" alt="" class="bg-pokemon rounded-3">
+			</a>
+			<h6 class="mt-1">N° 002</h6>
+			<h4 class="mb-3">Ivysaur</h4>
+			<p><span class="bg-grass text-dark rounded-3 pt-1 pb-1 ps-3 pe-3">Planta</span> <span
+					class="bg-poison text-light rounded-3 pt-1 pb-1 ps-3 pe-3">Veneno</span></p>
+		</div>
+		<div class="col-sm-3">
+			<a href="" class="pokemon">
+				<img src="img/venusaur.png" alt="" class="bg-pokemon rounded-3">
+			</a>
+			<h6 class="mt-1">N° 003</h6>
+			<h4 class="mb-3">Venusaur</h4>
+			<p><span class="bg-grass text-dark rounded-3 pt-1 pb-1 ps-3 pe-3">Planta</span> <span
+					class="bg-poison text-light rounded-3 pt-1 pb-1 ps-3 pe-3">Veneno</span></p>
+		</div>
+		<div class="col-sm-3">
+			<a href="" class="pokemon">
+				<img src="img/charmander.png" alt="" class="bg-pokemon rounded-3">
+			</a>
+			<h6 class="mt-1">N° 004</h6>
+			<h4 class="mb-3">Charmander</h4>
+			<p><span class="bg-fire text-light rounded-3 pt-1 pb-1 ps-3 pe-3">Fuego</span></p>
+		</div> -->
+
+		<!-- <div class="container-fluid m-auto">
+			<div class="lds-ellipsis">
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+			</div>
+		</div> -->
+
+
+		<script src="js/lib/bootstrap.bundle.min.js"></script>
+		<script src="js/lib/bootstrap.esm.min.js"></script>
+		<script src="js/lib/bootstrap.min.js"></script>
+		<script src="js/lib/popper.min.js"></script>
+		<script src="js/lib/axios.min.js"></script>
+		<script src="js/theme-mode.js"></script>
+		<script src="js/main.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,251 @@
+:root {
+    --primary-color: #302AE6;
+    --secondary-color: #536390;
+    --font-color: #424242;
+    --bg-color: #e6e6e6;
+    --heading-color: #292922;
+}
+
+/* Slider */
+
+[data-theme="dark"] {
+    --primary-color: #9A97F3;
+    --secondary-color: #818cab;
+    --font-color: #e1e1ff;
+    --bg-color: #161625;
+    --heading-color: #818cab;
+}
+
+body {
+    transition: .2s;
+    background-color: var(--bg-color);
+    color: var(--font-color);
+}
+
+.theme-switch-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+em {
+    margin-left: 10px;
+    font-size: 1rem;
+}
+
+.theme-switch {
+    display: inline-block;
+    height: 34px;
+    position: relative;
+    width: 60px;
+}
+
+.theme-switch input {
+    display: none;
+}
+
+.slider {
+    background-color: #ccc;
+    bottom: 0;
+    cursor: pointer;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: .4s;
+}
+
+.slider:before {
+    background-color: #fff;
+    bottom: 4px;
+    content: "";
+    height: 26px;
+    left: 4px;
+    position: absolute;
+    transition: .4s;
+    width: 26px;
+}
+
+input:checked+.slider {
+    background-color: #253f92;
+}
+
+input:checked+.slider:before {
+    transform: translateX(26px);
+}
+
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+/* Loader */
+
+.lds-ellipsis {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+  }
+  .lds-ellipsis div {
+    position: absolute;
+    top: 33px;
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background: red;
+    animation-timing-function: cubic-bezier(0, 1, 1, 0);
+  }
+  .lds-ellipsis div:nth-child(1) {
+    left: 8px;
+    animation: lds-ellipsis1 0.6s infinite;
+  }
+  .lds-ellipsis div:nth-child(2) {
+    left: 8px;
+    animation: lds-ellipsis2 0.6s infinite;
+  }
+  .lds-ellipsis div:nth-child(3) {
+    left: 32px;
+    animation: lds-ellipsis2 0.6s infinite;
+  }
+  .lds-ellipsis div:nth-child(4) {
+    left: 56px;
+    animation: lds-ellipsis3 0.6s infinite;
+  }
+  @keyframes lds-ellipsis1 {
+    0% {
+      transform: scale(0);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  @keyframes lds-ellipsis3 {
+    0% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(0);
+    }
+  }
+  @keyframes lds-ellipsis2 {
+    0% {
+      transform: translate(0, 0);
+    }
+    100% {
+      transform: translate(24px, 0);
+    }
+  }
+
+
+/* Colores tipos de pokémon */
+.bg-fire
+{
+  background: #FD7D24;
+}
+
+.bg-grass
+{
+  background: #9BCC50;
+}
+
+.bg-water
+{
+  background: #4592C4;
+}
+
+.bg-flying
+{
+  /* background: rgb(189,185,184); */
+  background: linear-gradient(0deg, rgba(189,185,184,1) 50%, rgba(61,199,239,1) 50%);
+}
+
+.bg-poison
+{
+  background: #B97FC9;
+}
+
+.bg-electric
+{
+  background: #EED535;
+}
+
+.bg-fairy
+{
+  background: #FDB9E9;
+}
+
+.bg-darktype
+{
+  background: #707070;
+}
+
+.bg-bug
+{
+  background: #729F3F;
+}
+
+.bg-fighting
+{
+  background: #D56723;
+}
+
+.bg-ghost
+{
+  background: #AB9842;
+}
+
+.bg-ground
+{
+  background: linear-gradient(0deg, rgba(171,152,66,1) 50%, rgba(247,222,63,1) 50%);
+}
+
+.bg-ice
+{
+  background: #B97FC9;
+}
+
+.bg-normal
+{
+  background: #F366B9;
+}
+
+.bg-psychic
+{
+  background: #F366B9;
+}
+
+.bg-rock
+{
+  background: #A38C21;
+}
+
+.bg-steel
+{
+  background: #9EB7B8;
+}
+
+.bg-dragon
+{
+  background: linear-gradient(0deg, rgba(83,164,207,1) 50%, rgba(241,110,87,1) 50%);
+}
+
+.bg-pokemon
+{
+  background: #F2F2F2;
+}
+
+/* Clases variadas */
+
+.pokemon>img
+{
+  transition: 0.4s all;
+}
+
+.pokemon>img:hover
+{
+  transition: 0.4s all;
+  transform: translateY(-10px) !important;
+}
