@@ -209,7 +209,7 @@ input:checked+.slider:before {
 
 .bg-normal
 {
-  background: #F366B9;
+  background: #A4ACAF;
 }
 
 .bg-psychic
@@ -247,5 +247,5 @@ input:checked+.slider:before {
 .pokemon>img:hover
 {
   transition: 0.4s all;
-  transform: translateY(-10px) !important;
+  transform: translateY(-5px) !important;
 }

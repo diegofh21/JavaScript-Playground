@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pokédex</title>
+  <title>Pokémon</title>
 
   <link rel="stylesheet" href="css/bootstrap-grid.min.css">
   <link rel="stylesheet" href="css/bootstrap-reboot.min.css">
@@ -16,8 +16,7 @@
   <link rel="shortcut icon" href="img/pokeball-pixelart.ico" type="image/x-icon">
 </head>
 
-<body onload="mode(); scanPokemon();" id="bodyData">
-
+<body onload="mode(); pokemonDetails()">
   <nav id='navbar' class="navbar">
     <div class="container-fluid">
       <a id="dark-label" class="navbar-brand">
@@ -37,42 +36,34 @@
       </form>
     </div>
   </nav>
+
   <div class="container-fluid mb-4">
-    <div class="row">
-      <img src="img/pokedex-2.png" alt="Pokedex" style="width: 15% !important;" class="m-auto img-fluid"
-        onclick="scanPokemon()">
-      <h4 class="text-center mt-3">¡Haz click en la pokedex para escanear y descubrir nuevos pokémon!</h4>
+    <div id="loader" class="w-100 m-auto text-center mt-5">
+      <div class="lds-ellipsis">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
     </div>
 
-    <div class="container mt-5" id="wrapper">
-      <div class="row" id="pokeData">
+    <div class="container">
+      <div class="row text-center">
+        <h3 class="mb-3">Bulbasaur</h3>
+        <img src="img/bulbasaur.png" alt="Pokedex" style="width: 30% !important;" class="bg-pokemon rounded-3 m-auto img-fluid">
+        <h4 class="mt-1">N° 001</h4>
+        
       </div>
-
-      <div id="loader" class="w-100 m-auto text-center">
-        <div class="lds-ellipsis">
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-        </div>
-      </div>
-
-      <button class="btn btn-primary w-100 mt-5" onclick="scanPokemon()">
-        <img src="img/icons8-pokeball-48.png" alt="">
-        ¡Escanear más pokémon!
-        <img src="img/icons8-pokeball-48.png" alt="">
-      </button>
+    </div>
   </div>
 
-
-    <script src="js/lib/bootstrap.bundle.min.js"></script>
-    <script src="js/lib/bootstrap.esm.min.js"></script>
-    <script src="js/lib/bootstrap.min.js"></script>
-    <script src="js/lib/popper.min.js"></script>
-    <script src="js/lib/axios.min.js"></script>
-    <script src="js/theme-mode.js"></script>
-    <script src="js/main.js"></script>
-
+  <script src="js/lib/bootstrap.bundle.min.js"></script>
+  <script src="js/lib/bootstrap.esm.min.js"></script>
+  <script src="js/lib/bootstrap.min.js"></script>
+  <script src="js/lib/popper.min.js"></script>
+  <script src="js/lib/axios.min.js"></script>
+  <script src="js/theme-mode.js"></script>
+  <script src="js/pokemon-details.js"></script>
 </body>
 
 </html>

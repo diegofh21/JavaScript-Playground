@@ -4,7 +4,6 @@ function mode() {
     if (mode == 'night') {
         document.getElementById('checkbox').setAttribute('checked', true)
         document.getElementById('dark-label').classList.add('text-light')
-        document.getElementById('tabla').classList.add('text-light')
 
         document.documentElement.setAttribute('data-theme', 'dark');
     }
