@@ -6,9 +6,9 @@ function pokemonDetails()
     console.log("Pokémon ==> ", pokemon)
 
     axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemon}`)
-  .then(function (response) {
-    const data = response.data;
-    console.log(data)
+    .then(function (response) {
+      const data = response.data;
+      console.log(data)
     
     // document.querySelector("#flag").src= data.flags.png;
     // document.querySelector("#name").innerHTML= data.name;

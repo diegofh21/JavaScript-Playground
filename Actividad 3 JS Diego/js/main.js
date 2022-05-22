@@ -20,7 +20,6 @@ function scanPokemon() {
   for (let i = pokeID; i < maxPokeID; i++) {
     axios.get(`https://pokeapi.co/api/v2/pokemon/${i}`)
       .then(function (response) {
-        // console.log(pokeID)
 
         const pokemon = response.data;
         
@@ -328,21 +327,6 @@ function scanPokemon() {
 
   maxPokeID += 13
 
-  console.log(pokeID)
-  console.log(maxPokeID)
-}
-
-function loadOnScroll()
-{
-  console.log("sdfsdf")
-  var topScroll = pokeData.scrollTop;
-  var heightScroll = pokeData.scrollHeight;
-  var scrollDiff = topScroll - heightScroll;
-  var height = pokeData.clientHeight;
-  var offPageHeight = 50;
-
-  if(scrollDiff < (height + offPageHeight))
-  {
-    console.log("sdfsdf")
-  }
+  // console.log(pokeID)
+  // console.log(maxPokeID)
 }
