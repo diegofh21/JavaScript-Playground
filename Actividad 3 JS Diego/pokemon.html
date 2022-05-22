@@ -49,52 +49,85 @@
 
     <div class="container">
       <div class="row">
-        <h2 class="mb-5 text-center">Bulbasaur N° 001</h2>
+        <h2 class="mb-5 text-center" id="pokemon-name"></h2>
         <div class="col-sm-6 w-50 text-center">
-          <img src="img/bulbasaur.png" alt="Pokedex" class="bg-pokemon rounded-3 m-auto img-fluid">
+          <div class="row">
+            <div class="col-sm-12">
+              <img src="" alt="Pokemon" id="pokemon-img" class="bg-pokemon rounded-3 m-auto img-fluid">
+            </div>
+          </div>
           <br>
-          <h3 class="mt-4">Estadisticas</h3>
-          <ul>
-            <li>HP</li>
-            <li>Ataque</li>
-            <li>Defensa</li>
-            <li>Ataque ESP</li>
-            <li>Defensa ESP</li>
-            <li>Velocidad</li>
-          </ul>
+          <div class="row">
+            <h3 class="mt-4">Puntos base</h3>
+            <div class="row">
+              <div class="col-sm-5 text-end">HP</div>
+              <div class="col-sm-5" id="hp_bar">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-5 text-end">Ataque</div>
+              <div class="col-sm-5" id="atk_bar">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-5 text-end">Defensa</div>
+              <div class="col-sm-5" id="def_bar">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-5 text-end">Ataque ESP</div>
+              <div class="col-sm-5" id="atksp_bar">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-5 text-end">Defensa ESP</div>
+              <div class="col-sm-5" id="defsp_bar">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-5 text-end">Velocidad</div>
+              <div class="col-sm-5" id="spd_bar">
+              </div>
+            </div>
+          </div>
         </div>
 
         <div class="col-sm-6">
           <div class="row">
-            <div class="container bg-primary text-light p-4 rounded-3">
+            <div class="container bg-primary text-light p-4 rounded-3 text-center">
               <div class="row">
-                <div class="col-sm-6">Altura</div>
-                <div class="col-sm-6">Categoria</div>
+                <div class="col-sm-6"><h4>Altura</h4></div>
+                <div class="col-sm-6"><h4>Categoria</h4></div>
               </div>
               <div class="row">
-                <div class="col-sm-6">0,7M</div>
-                <div class="col-sm-6">SEMILLA</div>
-              </div>
-              <br>
-              <div class="row">
-                <div class="col-sm-6">Peso</div>
-                <div class="col-sm-6">Habilidad</div>
-              </div>
-              <div class="row">
-                <div class="col-sm-6">6,9KG</div>
-                <div class="col-sm-6">ESPESURA</div>
+                <div class="col-sm-6"><h5 id="pokeHeight"></h5></div>
+                <div class="col-sm-6"><h5 id="pokeCategory"></h5></div>
               </div>
               <br>
               <div class="row">
-                <div class="col-sm-6">GENÉRO</div>
-                <div class="col-sm-6">MACHO Y HEMBRA</div>
+                <div class="col-sm-6"><h4>Peso</h4></div>
+                <div class="col-sm-6"><h4>Habilidad</h4></div>
+              </div>
+              <div class="row">
+                <div class="col-sm-6"><h5 id="pokeWeight"></h5></div>
+                <div class="col-sm-6"><h5 id="pokeSkill"></h5></div>
+              </div>
+              <br>
+              <div class="row">
+                <div class="col-sm-6"><h5>Genéro</h5></div>
+              </div>
+              <div class="row">
+                <div class="col-sm-6" id="pokeGender"><h5>Macho y Hembra</h5></div>
               </div>
             </div>
           </div>
-          <div class="row mt-3">
-            <h3 class="mb-3">Tipo</h3>
-            <br>
-            <h6><span class="bg-grass pt-1 pb-1 ps-5 pe-5 rounded-3">Planta</span><span class="ms-4 bg-poison pt-1 pb-1 ps-5 pe-5 rounded-3">Veneno</span></h6>
+          <br>
+          <div class="row mt-3 text-center">
+            <div class="col-sm-12">
+              <h3 class="mb-3">Tipo</h3>
+              <br>
+              <h6 id="pokeType"></h6>
+            </div>
           </div>
         </div>
       </div>
