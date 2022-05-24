@@ -1,10 +1,6 @@
 let pokeID = 1
 let maxPokeID = 13
 
-var pokeData = document.getElementById('bodyData');
-
-pokeData.addEventListener("scroll", loadOnScroll);
-
 function setLoader(state) {
   if(state == true) {
     document.getElementById("loader").style.display = "block";

@@ -2,7 +2,7 @@ function pokemonDetails() {
   const url_string = window.location.href;
   const url = new URL(url_string);
   const pokemon = url.searchParams.get("pokemon");
-  console.log("Pokémon ==> ", pokemon)
+  // console.log("Pokémon ==> ", pokemon)
 
   axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemon}`)
     .then(function (response) {
@@ -18,6 +18,39 @@ function pokemonDetails() {
 
       document.querySelector("#pokemon-name").innerHTML = "N° " + pokemon.id + " - " + pokeName
       document.querySelector("#pokemon-img").src = pokemon.sprites.other["official-artwork"].front_default;
+
+      // Male sprites
+      document.querySelector("#front_male").src = pokemon.sprites.front_default;
+      document.querySelector("#back_male").src = pokemon.sprites.back_default;
+
+      // Female sprites
+      if((pokemon.sprites.front_female && pokemon.sprites.back_female) == null)
+      {
+        document.querySelector("#front_female").src = pokemon.sprites.front_default;
+        document.querySelector("#back_female").src = pokemon.sprites.back_default;
+      }
+      else
+      {
+        document.querySelector("#front_female").src = pokemon.sprites.front_female;
+        document.querySelector("#back_female").src = pokemon.sprites.back_female;
+      }
+      
+      // Shiny Male sprites
+      document.querySelector("#front_shiny").src = pokemon.sprites.front_shiny;
+      document.querySelector("#back_shiny").src = pokemon.sprites.back_shiny;
+
+      // Shiny Female sprites
+      if((pokemon.sprites.front_shiny_female && pokemon.sprites.back__shiny_female) == null)
+      {
+        document.querySelector("#front_shiny_female").src = pokemon.sprites.front_shiny_female;
+        document.querySelector("#back_shiny_female").src = pokemon.sprites.back_shiny_female;
+      }
+      else
+      {
+        document.querySelector("#front_shiny_female").src = pokemon.sprites.front_female;
+        document.querySelector("#back_shiny_female").src = pokemon.sprites.back_female;
+      }
+
       // Barra de HP
       document.querySelector("#hp_bar").innerHTML = `<div class="progress mt-1">
       <div class="progress-bar bg-success" role="progressbar" style="width: ${pokemon.stats[0].base_stat}%;" aria-valuenow="${pokemon.stats[0].base_stat}" aria-valuemin="0" aria-valuemax="200">${pokemon.stats[0].base_stat}</div>
@@ -46,32 +79,27 @@ function pokemonDetails() {
       document.querySelector("#pokeWeight").innerHTML = pokemon.weight / 10 + " Kg";
       document.querySelector("#pokeHeight").innerHTML = pokemon.height / 10 + " M";
 
-      const arr2 = pokemon.abilities[0].ability.name.split(" ");
-      for (var j = 0; j < arr2.length; j++) {
-        arr2[j] = arr2[j].charAt(0).toUpperCase() + arr2[j].slice(1);
-      }
+      var pokeCategory  = "";
+      var pokeSkill     = "";
 
-      const pokeCategory = arr2.join(" ");
+      axios.get(`https://pokeapi.co/api/v2/ability/${pokemon.abilities[0].ability.name}`).then((response) => {
+        const pokeAbility = response.data.names[5].name
+        pokeCategory = pokeAbility;
+        document.querySelector("#pokeCategory"). innerHTML = pokeCategory;
+      });
 
-      const arr3 = pokemon.abilities[1].ability.name.split(" ");
-      for (var j = 0; j < arr3.length; j++) {
-        arr3[j] = arr3[j].charAt(0).toUpperCase() + arr3[j].slice(1);
-      }
-
-      const pokeSkill = arr3.join("-");
-      document.querySelector("#pokeCategory"). innerHTML = pokeCategory;
-      document.querySelector("#pokeSkill").innerHTML = pokeSkill;
-      // document.querySelector("#flag").src= data.flags.png;
-      // document.querySelector("#name").innerHTML= data.name;
-      // document.querySelector("#capital").innerHTML= checkCapital(data.capital)
-      // document.querySelector("#phone").innerHTML= `+${data.callingCodes[0]}`;
-      // document.querySelector("#domain").innerHTML= data.topLevelDomain[0];
-      // document.querySelector("#area").innerHTML= data.area;
-      // document.querySelector("#population").innerHTML= data.population;
+      axios.get(`https://pokeapi.co/api/v2/ability/${pokemon.abilities[1].ability.name}`).then((response) => {
+        const pokeAbility2 = response.data.names[5].name
+        pokeSkill = pokeAbility2;
+        document.querySelector("#pokeSkill"). innerHTML = pokeSkill;
+      });
+      
+      // document.querySelector("#pokeSkill").innerHTML = pokeSkill;
 
       // If para los tipos de pokemon: Normal, Fire, Water, Grass, Flying, Fighting, Poison, Electric, Ground, Rock, Psychic, Ice, Bug, Ghost, Steel, Dragon, Dark and Fairy
       if(pokemon.types.length > 1)
       {
+        // Primer tipo
         switch(pokemon.types[0].type.name)
         {
           case 'normal':
@@ -246,6 +274,7 @@ function pokemonDetails() {
       }
       else
       {
+        // Primer tipo
         switch(pokemon.types[0].type.name)
         {
           case 'normal':
@@ -343,11 +372,39 @@ function pokemonDetails() {
         document.getElementById("pokeType").innerHTML = typeOutput3;
       }
 
+      // Movimientos
+      for (let k = 0; k < pokemon.moves.length; k++) {
+        const move = pokemon.moves[k].move.name;
+        axios.get(`https://pokeapi.co/api/v2/move/${move}`).then((response) => {
+          const movimiento = response.data;
+          // console.log(movimiento)
+          console.log(movimiento.names[5].name, " poder: ", movimiento.power, " usos: ", movimiento.pp)
+        })
+      }
+
       setLoader(false);
     })
     .catch(function (error) {
       console.log(error);
     });
+
+  axios.get(`https://pokeapi.co/api/v2/gender/?name=${pokemon}`).then((response) => {
+
+    const data = response.data;
+
+    if(data.results.length > 2)
+    {
+      genderOutput = `Macho, Hembra y Sin Genéro`;
+      document.querySelector("#pokeGender").innerHTML = genderOutput;
+    }
+    else
+    {
+      genderOutput = `Macho y Hembra`;
+      document.querySelector("#pokeGender").innerHTML = genderOutput;
+    }
+  }).catch((error) => {
+    console.log(error)
+  })
 }
 
 function setLoader(state) {

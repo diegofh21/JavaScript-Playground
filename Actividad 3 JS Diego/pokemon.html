@@ -19,7 +19,7 @@
 <body onload="mode(); pokemonDetails()">
   <nav id='navbar' class="navbar">
     <div class="container-fluid">
-      <a id="dark-label" class="navbar-brand">
+      <a id="dark-label" class="navbar-brand" href="index.html">
         <img src="img/icons8-pokeball-48.png" alt="" width="50" height="50" class="d-inline-block">
         <span id="dark-label">Pokédex</span>
       </a>
@@ -38,12 +38,14 @@
   </nav>
 
   <div class="container-fluid mb-4">
-    <div id="loader" class="w-100 m-auto text-center mt-5">
-      <div class="lds-ellipsis">
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
+    <div id="wrapper">
+      <div id="loader" class="w-100 m-auto text-center mt-5">
+        <div class="lds-ellipsis">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
       </div>
     </div>
 
@@ -114,10 +116,10 @@
               </div>
               <br>
               <div class="row">
-                <div class="col-sm-6"><h5>Genéro</h5></div>
+                <div class="col-sm-12"><h4>Genéro</h4></div>
               </div>
               <div class="row">
-                <div class="col-sm-6" id="pokeGender"><h5>Macho y Hembra</h5></div>
+                <div class="col-sm-12"><h5 id="pokeGender"></h5></div>
               </div>
             </div>
           </div>
@@ -130,6 +132,72 @@
             </div>
           </div>
         </div>
+      </div>
+      <br>
+      <div class="container mt-5 m-auto text-center" id="sprites">
+        <h3>Imagenes del Pokémon</h3>
+        <br>
+        <div class="row">
+          <h3 class="col-sm-12">
+            Masculino
+          </h3>
+        </div>
+        <div class="row">
+          <div class="col-sm-6 text-end">
+            <img src="" alt="Pokemon" id="front_male" class="bg-pokemon rounded-3 m-auto img-fluid w-25">
+          </div>
+          <div class="col-sm-6 text-start">
+            <img src="" alt="Pokemon" id="back_male" class="bg-pokemon rounded-3 m-auto img-fluid w-25">
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <h3 class="col-sm-12">
+            Femenino
+          </h3>
+        </div>
+        <div class="row">
+          <div class="col-sm-6 text-end">
+            <img src="" alt="Pokemon" id="front_female" class="bg-pokemon rounded-3 m-auto img-fluid w-25">
+          </div>
+          <div class="col-sm-6 text-start">
+            <img src="" alt="Pokemon" id="back_female" class="bg-pokemon rounded-3 m-auto img-fluid w-25">
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <h3 class="col-sm-12">
+            Shiny Masculino
+          </h3>
+        </div>
+        <div class="row">
+          <div class="col-sm-6 text-end">
+            <img src="" alt="Pokemon" id="front_shiny" class="bg-pokemon rounded-3 m-auto img-fluid w-25">
+          </div>
+          <div class="col-sm-6 text-start">
+            <img src="" alt="Pokemon" id="back_shiny" class="bg-pokemon rounded-3 m-auto img-fluid w-25">
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <h3 class="col-sm-12">
+            Shiny Femenino
+          </h3>
+        </div>
+        <div class="row">
+          <div class="col-sm-6 text-end">
+            <img src="" alt="Pokemon" id="front_shiny_female" class="bg-pokemon rounded-3 m-auto img-fluid w-25">
+          </div>
+          <div class="col-sm-6 text-start">
+            <img src="" alt="Pokemon" id="back_shiny_female" class="bg-pokemon rounded-3 m-auto img-fluid w-25">
+          </div>
+        </div>
+      </div>
+
+      <div class="container mt-5 m-auto text-center" id="moves">
+        <table class="table">
+          
+        </table>
       </div>
     </div>
   </div>
