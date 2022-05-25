@@ -24,31 +24,27 @@ function pokemonDetails() {
       document.querySelector("#back_male").src = pokemon.sprites.back_default;
 
       // Female sprites
-      if((pokemon.sprites.front_female && pokemon.sprites.back_female) == null)
-      {
+      if ((pokemon.sprites.front_female && pokemon.sprites.back_female) == null) {
         document.querySelector("#front_female").src = pokemon.sprites.front_default;
         document.querySelector("#back_female").src = pokemon.sprites.back_default;
       }
-      else
-      {
+      else {
         document.querySelector("#front_female").src = pokemon.sprites.front_female;
         document.querySelector("#back_female").src = pokemon.sprites.back_female;
       }
-      
+
       // Shiny Male sprites
       document.querySelector("#front_shiny").src = pokemon.sprites.front_shiny;
       document.querySelector("#back_shiny").src = pokemon.sprites.back_shiny;
 
       // Shiny Female sprites
-      if((pokemon.sprites.front_shiny_female && pokemon.sprites.back__shiny_female) == null)
-      {
+      if ((pokemon.sprites.front_shiny_female && pokemon.sprites.back_shiny_female) == null) {
+        document.querySelector("#front_shiny_female").src = pokemon.sprites.front_shiny;
+        document.querySelector("#back_shiny_female").src = pokemon.sprites.back_shiny;
+      }
+      else {
         document.querySelector("#front_shiny_female").src = pokemon.sprites.front_shiny_female;
         document.querySelector("#back_shiny_female").src = pokemon.sprites.back_shiny_female;
-      }
-      else
-      {
-        document.querySelector("#front_shiny_female").src = pokemon.sprites.front_female;
-        document.querySelector("#back_shiny_female").src = pokemon.sprites.back_female;
       }
 
       // Barra de HP
@@ -79,293 +75,288 @@ function pokemonDetails() {
       document.querySelector("#pokeWeight").innerHTML = pokemon.weight / 10 + " Kg";
       document.querySelector("#pokeHeight").innerHTML = pokemon.height / 10 + " M";
 
-      var pokeCategory  = "";
-      var pokeSkill     = "";
+      var pokeCategory = "";
+      var pokeSkill = "";
 
       axios.get(`https://pokeapi.co/api/v2/ability/${pokemon.abilities[0].ability.name}`).then((response) => {
         const pokeAbility = response.data.names[5].name
         pokeCategory = pokeAbility;
-        document.querySelector("#pokeCategory"). innerHTML = pokeCategory;
+        document.querySelector("#pokeCategory").innerHTML = pokeCategory;
       });
 
       axios.get(`https://pokeapi.co/api/v2/ability/${pokemon.abilities[1].ability.name}`).then((response) => {
         const pokeAbility2 = response.data.names[5].name
         pokeSkill = pokeAbility2;
-        document.querySelector("#pokeSkill"). innerHTML = pokeSkill;
+        document.querySelector("#pokeSkill").innerHTML = pokeSkill;
       });
-      
+
       // document.querySelector("#pokeSkill").innerHTML = pokeSkill;
 
       // If para los tipos de pokemon: Normal, Fire, Water, Grass, Flying, Fighting, Poison, Electric, Ground, Rock, Psychic, Ice, Bug, Ghost, Steel, Dragon, Dark and Fairy
-      if(pokemon.types.length > 1)
-      {
+      if (pokemon.types.length > 1) {
         // Primer tipo
-        switch(pokemon.types[0].type.name)
-        {
+        switch (pokemon.types[0].type.name) {
           case 'normal':
             typeOutput1 = `<p><span class="bg-normal text-light rounded-3 pt-1 pb-1 ps-5 pe-5">Normal</span>`
-          break;
+            break;
 
           case 'fire':
             typeOutput1 = `<p><span class="bg-fire text-light rounded-3 pt-1 pb-1 ps-5 pe-5">Fuego</span>`
-          break;
+            break;
 
           case 'water':
             typeOutput1 = `<p><span class="bg-water text-light rounded-3 pt-1 pb-1 ps-5 pe-5">Agua</span>`
-          break;
+            break;
 
           case 'grass':
             typeOutput1 = `<p><span class="bg-grass text-light rounded-3 pt-1 pb-1 ps-5 pe-5">Hierba</span>`
-          break;
+            break;
 
           case 'flying':
             typeOutput1 = `<p><span class="bg-flying text-light rounded-3 pt-1 pb-1 ps-5 pe-5">Volador</span>`
-          break;
+            break;
 
           case 'poison':
             typeOutput1 = `<p><span class="bg-poison text-light rounded-3 pt-1 pb-1 ps-5 pe-5">Veneno</span>`
-          break;
+            break;
 
           case 'electric':
             typeOutput1 = `<p><span class="bg-electric text-light rounded-3 pt-1 pb-1 ps-5 pe-5">Electrico</span>`
-          break;
+            break;
 
           case 'ground':
             typeOutput1 = `<p><span class="bg-ground text-light rounded-3 pt-1 pb-1 ps-5 pe-5">Tierra</span>`
-          break;
+            break;
 
           case 'rock':
             typeOutput1 = `<p><span class="bg-rock text-light rounded-3 pt-1 pb-1 ps-5 pe-5">Roca</span>`
-          break;
+            break;
 
           case 'psychic':
             typeOutput1 = `<p><span class="bg-psychic text-light rounded-3 pt-1 pb-1 ps-5 pe-5">Psiquico</span>`
-          break;
+            break;
 
           case 'ice':
             typeOutput1 = `<p><span class="bg-ice text-light rounded-3 pt-1 pb-1 ps-5 pe-5">Heilo</span>`
-          break;
+            break;
 
           case 'bug':
             typeOutput1 = `<p><span class="bg-bug text-light rounded-3 pt-1 pb-1 ps-5 pe-5">Bicho</span>`
-          break;
+            break;
 
           case 'ghost':
             typeOutput1 = `<p><span class="bg-ghost text-light rounded-3 pt-1 pb-1 ps-5 pe-5">Fantasma</span>`
-          break;
+            break;
 
           case 'steel':
             typeOutput1 = `<p><span class="bg-steel text-light rounded-3 pt-1 pb-1 ps-5 pe-5">Acero</span>`
-          break;
+            break;
 
           case 'dragon':
             typeOutput1 = `<p><span class="bg-dragon text-light rounded-3 pt-1 pb-1 ps-5 pe-5">Dragon</span>`
-          break;
+            break;
 
           case 'dark':
             typeOutput1 = `<p><span class="bg-dark text-light rounded-3 pt-1 pb-1 ps-5 pe-5">Dark</span>`
-          break;
+            break;
 
           case 'fairy':
             typeOutput1 = `<p><span class="bg-fairy text-light rounded-3 pt-1 pb-1 ps-5 pe-5">Hada</span>`
-          break;
+            break;
 
           case 'fighting':
             typeOutput1 = `<p><span class="bg-fighting text-light rounded-3 pt-1 pb-1 ps-5 pe-5">Lucha</span>`
-          break;
+            break;
         }
 
         // Segundo tipo
-        switch(pokemon.types[1].type.name)
-        {
+        switch (pokemon.types[1].type.name) {
           case 'normal':
             typeOutput2 = `<span class="bg-normal text-light rounded-3 ms-2 pt-1 pb-1 ps-5 pe-5">Normal</span></p>
             </div>`
-          break;
+            break;
 
           case 'fire':
             typeOutput2 = `<span class="bg-fire text-light rounded-3 ms-2 pt-1 pb-1 ps-5 pe-5">Fuego</span></p>
             </div>`
-          break;
+            break;
 
           case 'water':
             typeOutput2 = `<span class="bg-water text-light rounded-3 ms-2 pt-1 pb-1 ps-5 pe-5">Agua</span></p>
             </div>`
-          break;
+            break;
 
           case 'grass':
             typeOutput2 = `<span class="bg-grass text-light rounded-3 ms-2 pt-1 pb-1 ps-5 pe-5">Hierba</span></p>
             </div>`
-          break;
+            break;
 
           case 'flying':
             typeOutput2 = `<span class="bg-flying text-light rounded-3 ms-2 pt-1 pb-1 ps-5 pe-5">Volador</span></p>
             </div>`
-          break;
+            break;
 
           case 'poison':
             typeOutput2 = `<span class="bg-poison text-light rounded-3 ms-2 pt-1 pb-1 ps-5 pe-5">Veneno</span></p>
             </div>`
-          break;
+            break;
 
           case 'electric':
             typeOutput2 = `<span class="bg-electric text-light rounded-3 ms-2 pt-1 pb-1 ps-5 pe-5">Electrico</span></p>
             </div>`
-          break;
+            break;
 
           case 'ground':
             typeOutput2 = `<span class="bg-ground text-light rounded-3 ms-2 pt-1 pb-1 ps-5 pe-5">Tierra</span></p>
             </div>`
-          break;
+            break;
 
           case 'rock':
             typeOutput2 = `<span class="bg-rock text-light rounded-3 ms-2 pt-1 pb-1 ps-5 pe-5">Roca</span></p>
             </div>`
-          break;
+            break;
 
           case 'psychic':
             typeOutput2 = `<span class="bg-psychic text-light rounded-3 ms-2 pt-1 pb-1 ps-5 pe-5">Psiquico</span></p>
             </div>`
-          break;
+            break;
 
           case 'ice':
             typeOutput2 = `<span class="bg-ice text-light rounded-3 ms-2 pt-1 pb-1 ps-5 pe-5">Heilo</span></p>
             </div>`
-          break;
+            break;
 
           case 'bug':
             typeOutput2 = `<span class="bg-bug text-light rounded-3 ms-2 pt-1 pb-1 ps-5 pe-5">Bicho</span></p>
             </div>`
-          break;
+            break;
 
           case 'ghost':
             typeOutput2 = `<span class="bg-ghost text-light rounded-3 ms-2 pt-1 pb-1 ps-5 pe-5">Fantasma</span></p>
             </div>`
-          break;
+            break;
 
           case 'steel':
             typeOutput2 = `<span class="bg-steel text-light rounded-3 ms-2 pt-1 pb-1 ps-5 pe-5">Acero</span></p>
             </div>`
-          break;
+            break;
 
           case 'dragon':
             typeOutput2 = `<span class="bg-dragon text-light rounded-3 ms-2 pt-1 pb-1 ps-5 pe-5">Dragon</span></p>
             </div>`
-          break;
+            break;
 
           case 'dark':
             typeOutput2 = `<span class="bg-dark text-light rounded-3 ms-2 pt-1 pb-1 ps-5 pe-5">Dark</span></p>
             </div>`
-          break;
+            break;
 
           case 'fairy':
             typeOutput2 = `<span class="bg-fairy text-light rounded-3 ms-2 pt-1 pb-1 ps-5 pe-5">Hada</span></p>
             </div>`
-          break;
+            break;
 
           case 'fighting':
             typeOutput2 = `<span class="bg-fighting text-light rounded-3 ms-2 pt-1 pb-1 ps-5 pe-5">Lucha</span></p>
             </div>`
-          break;
+            break;
         }
 
         var typeOutput3 = typeOutput1 + typeOutput2;
         document.getElementById("pokeType").innerHTML = typeOutput3;
       }
-      else
-      {
+      else {
         // Primer tipo
-        switch(pokemon.types[0].type.name)
-        {
+        switch (pokemon.types[0].type.name) {
           case 'normal':
             typeOutput1 = `<p><span class="bg-normal text-light rounded-3 pt-1 pb-1 ps-5 pe-5">Normal</span></p>
             </div>`
-          break;
+            break;
 
           case 'fire':
             typeOutput1 = `<p><span class="bg-fire text-light rounded-3 pt-1 pb-1 ps-5 pe-5">Fuego</span></p>
             </div>`
-          break;
+            break;
 
           case 'water':
             typeOutput1 = `<p><span class="bg-water text-light rounded-3 pt-1 pb-1 ps-5 pe-5">Agua</span></p>
             </div>`
-          break;
+            break;
 
           case 'grass':
             typeOutput1 = `<p><span class="bg-grass text-light rounded-3 pt-1 pb-1 ps-5 pe-5">Hierba</span></p>
             </div>`
-          break;
+            break;
 
           case 'flying':
             typeOutput1 = `<p><span class="bg-flying text-light rounded-3 pt-1 pb-1 ps-5 pe-5">Volador</span></p>
             </div>`
-          break;
+            break;
 
           case 'poison':
             typeOutput1 = `<p><span class="bg-poison text-light rounded-3 pt-1 pb-1 ps-5 pe-5">Veneno</span></p>
             </div>`
-          break;
+            break;
 
           case 'electric':
             typeOutput1 = `<p><span class="bg-electric text-light rounded-3 pt-1 pb-1 ps-5 pe-5">Electrico</span></p>
             </div>`
-          break;
+            break;
 
           case 'ground':
             typeOutput1 = `<p><span class="bg-ground text-light rounded-3 pt-1 pb-1 ps-5 pe-5">Tierra</span></p>
             </div>`
-          break;
+            break;
 
           case 'rock':
             typeOutput1 = `<p><span class="bg-rock text-light rounded-3 pt-1 pb-1 ps-5 pe-5">Roca</span></p>
             </div>`
-          break;
+            break;
 
           case 'psychic':
             typeOutput1 = `<p><span class="bg-psychic text-light rounded-3 pt-1 pb-1 ps-5 pe-5">Psiquico</span></p>
             </div>`
-          break;
+            break;
 
           case 'ice':
             typeOutput1 = `<p><span class="bg-ice text-light rounded-3 pt-1 pb-1 ps-5 pe-5">Heilo</span></p>
             </div>`
-          break;
+            break;
 
           case 'bug':
             typeOutput1 = `<p><span class="bg-bug text-light rounded-3 pt-1 pb-1 ps-5 pe-5">Bicho</span></p>
             </div>`
-          break;
+            break;
 
           case 'ghost':
             typeOutput1 = `<p><span class="bg-ghost text-light rounded-3 pt-1 pb-1 ps-5 pe-5">Fantasma</span></p>
             </div>`
-          break;
+            break;
 
           case 'steel':
             typeOutput1 = `<p><span class="bg-steel text-light rounded-3 pt-1 pb-1 ps-5 pe-5">Acero</span></p>
             </div>`
-          break;
+            break;
 
           case 'dragon':
             typeOutput1 = `<p><span class="bg-dragon text-light rounded-3 pt-1 pb-1 ps-5 pe-5">Dragon</span></p>
             </div>`
-          break;
+            break;
 
           case 'dark':
             typeOutput1 = `<p><span class="bg-dark text-light rounded-3 pt-1 pb-1 ps-5 pe-5">Dark</span></p>
             </div>`
-          break;
+            break;
 
           case 'fairy':
             typeOutput1 = `<p><span class="bg-fairy text-light rounded-3 pt-1 pb-1 ps-5 pe-5">Hada</span></p>
             </div>`
-          break;
+            break;
 
           case 'fighting':
             typeOutput1 = `<p><span class="bg-fighting text-light rounded-3 pt-1 pb-1 ps-5 pe-5">Lucha</span></p>
             </div>`
-          break;
+            break;
         }
 
         var typeOutput3 = typeOutput1
@@ -379,6 +370,12 @@ function pokemonDetails() {
           const movimiento = response.data;
           // console.log(movimiento)
           console.log(movimiento.names[5].name, " poder: ", movimiento.power, " usos: ", movimiento.pp)
+
+          document.querySelector('#movesInfo').innerHTML += `<tr>
+            <td>${movimiento.names[5].name}</td>
+            <td>${(movimiento.power == null) ? 'Buff / Debuff' : movimiento.power}</td>
+            <td>${movimiento.pp}</td>
+          </tr>`;
         })
       }
 
@@ -392,14 +389,12 @@ function pokemonDetails() {
 
     const data = response.data;
 
-    if(data.results.length > 2)
-    {
-      genderOutput = `Macho, Hembra y Sin Genéro`;
+    if (data.results.length > 2) {
+      genderOutput = `Masculino, Femenino o Sin Genéro`;
       document.querySelector("#pokeGender").innerHTML = genderOutput;
     }
-    else
-    {
-      genderOutput = `Macho y Hembra`;
+    else {
+      genderOutput = `Masculino o Femenino`;
       document.querySelector("#pokeGender").innerHTML = genderOutput;
     }
   }).catch((error) => {
@@ -408,7 +403,7 @@ function pokemonDetails() {
 }
 
 function setLoader(state) {
-  if(state == true) {
+  if (state == true) {
     document.getElementById("loader").style.display = "block";
     document.getElementById("wrapper").style.display = "none";
   }
