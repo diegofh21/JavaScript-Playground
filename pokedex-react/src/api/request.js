@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export async function getPokemonData(pokemon) {
+export async function searchPokemon(pokemon) {
   try {
     let url = `https://pokeapi.co/api/v2/pokemon/${pokemon}`;
     const res = await axios.get(url);
@@ -20,12 +20,9 @@ export async function getPokemons(limit=24, offset=0) {
   }
 }
 
-// export const getPokemons = async (limit = 25, offset = 0) => {
-//   try {
-//     let url = `https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`;
-//     const response = await fetch(url);
-//     console.log("response api",response)
-//     const data = await response.json();
-//     return data;
-//   } catch (err) {}
-// };
+export const getPokemonData = async (url) => {
+  try {
+    const res = await axios.get(url);
+    return res.data;
+  } catch (err) {}
+};

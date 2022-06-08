@@ -1,7 +1,6 @@
 import React from 'react';
 import { Nav, Navbar, Container } from 'react-bootstrap';
 import { Link } from 'react-router-dom'
-import pokeapiLogo from '../img/pokeapi_256.png';
 import pokeballLogo from '../img/pokeball.png'
 
 export const Header = () => {
