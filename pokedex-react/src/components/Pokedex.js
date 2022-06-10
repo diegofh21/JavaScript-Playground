@@ -1,7 +1,7 @@
 import React from 'react'
 import { Container, Row, Col } from 'react-bootstrap'
 import Pagination from "./Pagination";
-import Pokemon from "./Pokemon";
+import { Pokemon } from "./Pokemon";
 import pokedexLogo from '../img/pokedex.png'
 
 

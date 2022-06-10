@@ -2,8 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import App from './App';
-import {Home} from './views/Home/Home'
-import {PokemonDetails} from './views/PokemonDetails/PokemonDetails'
+import { Pokemon } from './components/Pokemon'
+import PokemonDetails from './views/PokemonDetails/PokemonDetails'
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -12,7 +12,14 @@ root.render(
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App/>} />
-        <Route path="/pokemon" element={<PokemonDetails/>} />
+        <Route path="/home" element={<App/>}></Route>
+        <Route path="/pokemon" element={<Pokemon/>}>
+          
+        </Route>
+        <Route path="/pokemon/:pokeID" element={<PokemonDetails/>}></Route>
+        <Route path="*" element={
+          <h1 className='text-center'>404 NOT FOUND</h1>
+        }></Route>
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

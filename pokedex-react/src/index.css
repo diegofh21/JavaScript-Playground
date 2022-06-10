@@ -169,4 +169,83 @@ nav {
     display: flex;
     box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 3px;
-  }
+}
+
+/* Colores tipos de pokémon */ 
+
+.bg-fire {
+    background: #FD7D24;
+}
+
+.bg-grass {
+    background: #9BCC50;
+}
+
+.bg-water {
+    background: #4592C4;
+}
+
+.bg-flying {
+    /* background: rgb(189,185,184); */
+    background: linear-gradient(0deg, rgba(189, 185, 184, 1) 50%, rgba(61, 199, 239, 1) 50%);
+}
+
+.bg-poison {
+    background: #B97FC9;
+}
+
+.bg-electric {
+    background: #EED535;
+}
+
+.bg-fairy {
+    background: #FDB9E9;
+}
+
+.bg-darktype {
+    background: #707070;
+}
+
+.bg-bug {
+    background: #729F3F;
+}
+
+.bg-fighting {
+    background: #D56723;
+}
+
+.bg-ghost {
+    background: #AB9842;
+}
+
+.bg-ground {
+    background: linear-gradient(0deg, rgba(171, 152, 66, 1) 50%, rgba(247, 222, 63, 1) 50%);
+}
+
+.bg-ice {
+    background: #B97FC9;
+}
+
+.bg-normal {
+    background: #A4ACAF;
+}
+
+.bg-psychic {
+    background: #F366B9;
+}
+
+.bg-rock {
+    background: #A38C21;
+}
+
+.bg-steel {
+    background: #9EB7B8;
+}
+
+.bg-dragon {
+    background: linear-gradient(0deg, rgba(83, 164, 207, 1) 50%, rgba(241, 110, 87, 1) 50%);
+}
+
+.bg-pokemon {
+    background: #F2F2F2;
+}

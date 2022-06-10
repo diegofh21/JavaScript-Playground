@@ -7,7 +7,7 @@ import { Pokemon } from './components/Pokemon'
 import { Home } from './views/Home/Home';
 import { PokemonDetails } from './views/PokemonDetails/PokemonDetails';
 
-import { getPokemonData, getPokemons, searchPokemon } from "./api/request";
+import { getPokedexData, getPokemons, getPokemon } from "./api/request";
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -25,7 +25,7 @@ function App() {
       setLoading(true);
       const data = await getPokemons(24, 24 * page);
       const promises = data.results.map(async (pokemon) => {
-        return await getPokemonData(pokemon.url);
+        return await getPokedexData(pokemon.url);
       });
       const results = await Promise.all(promises);
       setPokemons(results);
@@ -48,7 +48,7 @@ function App() {
     setLoading(true);
     setNotFound(false);
     setSearching(true);
-    const result = await searchPokemon(pokemon);
+    const result = await getPokemon(pokemon);
     if (!result) {
       setNotFound(true);
       setLoading(false);

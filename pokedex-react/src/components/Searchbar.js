@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { searchPokemon } from '../api/request'
+import { getPokemon } from '../api/request'
 import { Container, FormControl, Button, Row, Col } from 'react-bootstrap'
 
 export const Searchbar = () => {
@@ -11,7 +11,7 @@ export const Searchbar = () => {
   }
 
   const onClick = async (e) => {
-    const data = await searchPokemon(search);
+    const data = await getPokemon(search);
     setPokemon(data)
   }
 
