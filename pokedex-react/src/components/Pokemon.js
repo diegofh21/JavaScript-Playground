@@ -8,15 +8,15 @@ export const Pokemon = (props) => {
 
   const { pokemon } = props;
 
-  var Type1 = "";
-  var Type2 = "";
-  var typeOutput1, typeOutput2 = "";
+  // var Type1 = "";
+  // var Type2 = "";
+  var typeOutput1 = "";
+  var typeOutput2 = "";
   var typeOutput3;
 
   const getOneType = async () => {
     try {
       const tipo1 = await getPokemonType(pokemon.types[0].type.name);
-      Type1 = tipo1.names[5].name;
     } catch (error) {
       console.log(error)
     }
@@ -26,8 +26,6 @@ export const Pokemon = (props) => {
     try {
       const tipo1 = await getPokemonType(pokemon.types[0].type.name);
       const tipo2 = await getPokemonType(pokemon.types[1].type.name);
-      Type1 = tipo1.names[5].name;
-      Type2 = tipo2.names[5].name;
 
       switch (pokemon.types[0].type.name) {
         case 'normal':
@@ -184,9 +182,10 @@ export const Pokemon = (props) => {
           break;
       }
 
+      // typeOutput3 = `<p><span class='${typeOutput1.props.class}'>${typeOutput1.props.children}</span></p><span class='${typeOutput1.props.class}' >${typeOutput2.props.children}</span>`
       typeOutput3 = typeOutput1 + typeOutput2
-      console.log("tipo 1", typeOutput1.props)
-      // console.log(typeOutput3)
+      // console.log("2 tipos", typeOutput3)
+      console.log(typeOutput3)
     } catch (error) {
       console.log(error)
     }
@@ -229,9 +228,14 @@ export const Pokemon = (props) => {
                 })} */}
                 {(() => {
                   if (pokemon.types.length === 2) {
-                    return (
-                      <div>{typeOutput1}</div>
-                    )
+                    // typeOutput3.map((type, idx) => {
+                    //   return(<div>1{type}</div>);
+                    // })
+                    Object.keys(typeOutput3).map((key,idx) => {
+                      return(
+                        <div>{key}</div>
+                      );
+                    })
                   } else {
                     return (
                       <div>1</div>
