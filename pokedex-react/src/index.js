@@ -13,12 +13,10 @@ root.render(
       <Routes>
         <Route path="/" element={<App/>} />
         <Route path="/home" element={<App/>}></Route>
-        <Route path="/pokemon" element={<Pokemon/>}>
-          
-        </Route>
+        <Route path="/pokemon" element={<Pokemon/>}></Route>
         <Route path="/pokemon/:pokeID" element={<PokemonDetails/>}></Route>
         <Route path="*" element={
-          <h1 className='text-center'>404 NOT FOUND</h1>
+          <h1 className='text-center mt-5'>404 La pagina que estas buscando no esta disponible 😥</h1>
         }></Route>
       </Routes>
     </BrowserRouter>

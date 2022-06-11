@@ -1,5 +1,5 @@
-import React from 'react'
-import { Container, Card, Button, Row, Col } from 'react-bootstrap';
+import React, { useEffect, useState } from 'react'
+import { Card, Button, Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom'
 
 import { getPokemonType } from "../api/request";
@@ -8,197 +8,300 @@ export const Pokemon = (props) => {
 
   const { pokemon } = props;
 
-  // var Type1 = "";
-  // var Type2 = "";
-  var typeOutput1 = "";
-  var typeOutput2 = "";
-  var typeOutput3;
+  const [type1, setType1] = useState('')
+  const [type2, setType2] = useState('')
+  const [typeClass1, setTypeClass1] = useState('')
+  const [typeClass2, setTypeClass2] = useState('')
 
-  const getOneType = async () => {
-    try {
-      const tipo1 = await getPokemonType(pokemon.types[0].type.name);
-    } catch (error) {
-      console.log(error)
-    }
-  }
+  useEffect(() => {
+    pokeTypes()
+  }, []);
 
-  const getTwoTypes = async () => {
-    try {
-      const tipo1 = await getPokemonType(pokemon.types[0].type.name);
-      const tipo2 = await getPokemonType(pokemon.types[1].type.name);
-
-      switch (pokemon.types[0].type.name) {
+  const pokeTypes = async () => {
+    if (pokemon.types.length > 1) {
+      // Primer set
+      const res1 = await getPokemonType(pokemon.types[0].type.url)
+      switch (res1.name) {
         case 'normal':
-          typeOutput1 = <span class="bg-normal text-light rounded-3 pt-1 pb-1 ps-5 pe-5">Normal</span>
+          setType1('Normal')
+          setTypeClass1('bg-normal text-light rounded-3 pt-1 pb-1 ps-5 pe-5')
           break;
 
         case 'fire':
-          typeOutput1 = <span class="bg-fire text-light rounded-3 pt-1 pb-1 ps-5 pe-5">Fuego</span>
+          setType1('Fuego')
+          setTypeClass1('bg-fire text-light rounded-3 pt-1 pb-1 ps-5 pe-5')
           break;
 
         case 'water':
-          typeOutput1 = <span class="bg-water text-light rounded-3 pt-1 pb-1 ps-5 pe-5">Agua</span>
+          setType1('Agua')
+          setTypeClass1('bg-water text-light rounded-3 pt-1 pb-1 ps-5 pe-5')
           break;
 
         case 'grass':
-          typeOutput1 = <span class="bg-grass text-light rounded-3 pt-1 pb-1 ps-5 pe-5">Hierba</span>
+          setType1('Planta')
+          setTypeClass1('bg-grass text-dark rounded-3 pt-1 pb-1 ps-5 pe-5')
           break;
 
         case 'flying':
-          typeOutput1 = <span class="bg-flying text-light rounded-3 pt-1 pb-1 ps-5 pe-5">Volador</span>
+          setType1('Volador')
+          setTypeClass1('bg-flying text-light rounded-3 pt-1 pb-1 ps-5 pe-5')
           break;
 
         case 'poison':
-          typeOutput1 = <span class="bg-poison text-light rounded-3 pt-1 pb-1 ps-5 pe-5">Veneno</span>
+          setType1('Veneno')
+          setTypeClass1('bg-poison text-light rounded-3 pt-1 pb-1 ps-5 pe-5')
           break;
 
         case 'electric':
-          typeOutput1 = <span class="bg-electric text-light rounded-3 pt-1 pb-1 ps-5 pe-5">Electrico</span>
+          setType1('Electrico')
+          setTypeClass1('bg-electric text-light rounded-3 pt-1 pb-1 ps-5 pe-5')
           break;
 
         case 'ground':
-          typeOutput1 = <span class="bg-ground text-light rounded-3 pt-1 pb-1 ps-5 pe-5">Tierra</span>
+          setType1('Tierra')
+          setTypeClass1('bg-ground text-light rounded-3 pt-1 pb-1 ps-5 pe-5')
           break;
 
         case 'rock':
-          typeOutput1 = <span class="bg-rock text-light rounded-3 pt-1 pb-1 ps-5 pe-5">Roca</span>
+          setType1('Roca')
+          setTypeClass1('bg-rock text-light rounded-3 pt-1 pb-1 ps-5 pe-5')
           break;
 
         case 'psychic':
-          typeOutput1 = <span class="bg-psychic text-light rounded-3 pt-1 pb-1 ps-5 pe-5">Psiquico</span>
+          setType1('Psiquico')
+          setTypeClass1('bg-psychic text-light rounded-3 pt-1 pb-1 ps-5 pe-5')
           break;
 
         case 'ice':
-          typeOutput1 = <span class="bg-ice text-light rounded-3 pt-1 pb-1 ps-5 pe-5">Heilo</span>
+          setType1('Hielo')
+          setTypeClass1('bg-ice text-light rounded-3 pt-1 pb-1 ps-5 pe-5')
           break;
 
         case 'bug':
-          typeOutput1 = <span class="bg-bug text-light rounded-3 pt-1 pb-1 ps-5 pe-5">Bicho</span>
+          setType1('Bicho')
+          setTypeClass1('bg-bug text-light rounded-3 pt-1 pb-1 ps-5 pe-5')
           break;
 
         case 'ghost':
-          typeOutput1 = <span class="bg-ghost text-light rounded-3 pt-1 pb-1 ps-5 pe-5">Fantasma</span>
+          setType1('Fantasma')
+          setTypeClass1('bg-ghost text-light rounded-3 pt-1 pb-1 ps-5 pe-5')
           break;
 
         case 'steel':
-          typeOutput1 = <span class="bg-steel text-light rounded-3 pt-1 pb-1 ps-5 pe-5">Acero</span>
+          setType1('Acero')
+          setTypeClass1('bg-steel text-light rounded-3 pt-1 pb-1 ps-5 pe-5')
           break;
 
         case 'dragon':
-          typeOutput1 = <span class="bg-dragon text-light rounded-3 pt-1 pb-1 ps-5 pe-5">Dragon</span>
+          setType1('Dragon')
+          setTypeClass1('bg-dragon text-light rounded-3 pt-1 pb-1 ps-5 pe-5')
           break;
 
         case 'dark':
-          typeOutput1 = <span class="bg-dark text-light rounded-3 pt-1 pb-1 ps-5 pe-5">Dark</span>
+          setType1('Siniestro')
+          setTypeClass1('bg-dark text-light rounded-3 pt-1 pb-1 ps-5 pe-5')
           break;
 
         case 'fairy':
-          typeOutput1 = <span class="bg-fairy text-light rounded-3 pt-1 pb-1 ps-5 pe-5">Hada</span>
+          setType1('Hada')
+          setTypeClass1('bg-fairy text-light rounded-3 pt-1 pb-1 ps-5 pe-5')
           break;
 
         case 'fighting':
-          typeOutput1 = <span class="bg-fighting text-light rounded-3 pt-1 pb-1 ps-5 pe-5">Lucha</span>
-          break;
-
-        default:
+          setType1('Lucha')
+          setTypeClass1('bg-fighting text-light rounded-3 pt-1 pb-1 ps-5 pe-5')
           break;
       }
 
-      // Segundo tipo
-      switch (pokemon.types[1].type.name) {
+      // Segundo set
+      const res2 = await getPokemonType(pokemon.types[1].type.url)
+      switch (res2.name) {
         case 'normal':
-          typeOutput2 = <span class="bg-normal text-light rounded-3 ms-2 pt-1 pb-1 ps-5 pe-5">Normal</span>
+          setType2('Normal')
+          setTypeClass2('bg-normal text-light rounded-3 pt-1 pb-1 ps-5 pe-5')
           break;
 
         case 'fire':
-          typeOutput2 = <span class="bg-fire text-light rounded-3 ms-2 pt-1 pb-1 ps-5 pe-5">Fuego</span>
+          setType2('Fuego')
+          setTypeClass2('bg-fire text-light rounded-3 pt-1 pb-1 ps-5 pe-5')
           break;
 
         case 'water':
-          typeOutput2 = <span class="bg-water text-light rounded-3 ms-2 pt-1 pb-1 ps-5 pe-5">Agua</span>
+          setType2('Agua')
+          setTypeClass2('bg-water text-light rounded-3 pt-1 pb-1 ps-5 pe-5')
           break;
 
         case 'grass':
-          typeOutput2 = <span class="bg-grass text-light rounded-3 ms-2 pt-1 pb-1 ps-5 pe-5">Hierba</span>
+          setType2('Planta')
+          setTypeClass2('bg-grass text-light rounded-3 pt-1 pb-1 ps-5 pe-5')
           break;
 
         case 'flying':
-          typeOutput2 = <span class="bg-flying text-light rounded-3 ms-2 pt-1 pb-1 ps-5 pe-5">Volador</span>
+          setType2('Volador')
+          setTypeClass2('bg-flying text-light rounded-3 pt-1 pb-1 ps-5 pe-5')
           break;
 
         case 'poison':
-          typeOutput2 = <span class="bg-poison text-light rounded-3 ms-2 pt-1 pb-1 ps-5 pe-5">Veneno</span>
+          setType2('Veneno')
+          setTypeClass2('bg-poison text-light rounded-3 pt-1 pb-1 ps-5 pe-5')
           break;
 
         case 'electric':
-          typeOutput2 = <span class="bg-electric text-light rounded-3 ms-2 pt-1 pb-1 ps-5 pe-5">Electrico</span>
+          setType2('Electrico')
+          setTypeClass2('bg-electric text-light rounded-3 pt-1 pb-1 ps-5 pe-5')
           break;
 
         case 'ground':
-          typeOutput2 = <span class="bg-ground text-light rounded-3 ms-2 pt-1 pb-1 ps-5 pe-5">Tierra</span>
+          setType2('Tierra')
+          setTypeClass2('bg-ground text-light rounded-3 pt-1 pb-1 ps-5 pe-5')
           break;
 
         case 'rock':
-          typeOutput2 = <span class="bg-rock text-light rounded-3 ms-2 pt-1 pb-1 ps-5 pe-5">Roca</span>
+          setType2('Roca')
+          setTypeClass2('bg-rock text-light rounded-3 pt-1 pb-1 ps-5 pe-5')
           break;
 
         case 'psychic':
-          typeOutput2 = <span class="bg-psychic text-light rounded-3 ms-2 pt-1 pb-1 ps-5 pe-5">Psiquico</span>
+          setType2('Psiquico')
+          setTypeClass2('bg-psychic text-light rounded-3 pt-1 pb-1 ps-5 pe-5')
           break;
 
         case 'ice':
-          typeOutput2 = <span class="bg-ice text-light rounded-3 ms-2 pt-1 pb-1 ps-5 pe-5">Heilo</span>
+          setType2('Hielo')
+          setTypeClass2('bg-ice text-light rounded-3 pt-1 pb-1 ps-5 pe-5')
           break;
 
         case 'bug':
-          typeOutput2 = <span class="bg-bug text-light rounded-3 ms-2 pt-1 pb-1 ps-5 pe-5">Bicho</span>
+          setType2('Bicho')
+          setTypeClass2('bg-bug text-light rounded-3 pt-1 pb-1 ps-5 pe-5')
           break;
 
         case 'ghost':
-          typeOutput2 = <span class="bg-ghost text-light rounded-3 ms-2 pt-1 pb-1 ps-5 pe-5">Fantasma</span>
+          setType2('Fantasma')
+          setTypeClass2('bg-ghost text-light rounded-3 pt-1 pb-1 ps-5 pe-5')
           break;
 
         case 'steel':
-          typeOutput2 = <span class="bg-steel text-light rounded-3 ms-2 pt-1 pb-1 ps-5 pe-5">Acero</span>
+          setType2('Acero')
+          setTypeClass2('bg-steel text-light rounded-3 pt-1 pb-1 ps-5 pe-5')
           break;
 
         case 'dragon':
-          typeOutput2 = <span class="bg-dragon text-light rounded-3 ms-2 pt-1 pb-1 ps-5 pe-5">Dragon</span>
+          setType2('Dragon')
+          setTypeClass2('bg-dragon text-light rounded-3 pt-1 pb-1 ps-5 pe-5')
           break;
 
         case 'dark':
-          typeOutput2 = <span class="bg-dark text-light rounded-3 ms-2 pt-1 pb-1 ps-5 pe-5">Dark</span>
+          setType2('Siniestro')
+          setTypeClass2('bg-dark text-light rounded-3 pt-1 pb-1 ps-5 pe-5')
           break;
 
         case 'fairy':
-          typeOutput2 = <span class="bg-fairy text-light rounded-3 ms-2 pt-1 pb-1 ps-5 pe-5">Hada</span>
+          setType2('Hada')
+          setTypeClass2('bg-fairy text-light rounded-3 pt-1 pb-1 ps-5 pe-5')
           break;
 
         case 'fighting':
-          typeOutput2 = <span class="bg-fighting text-light rounded-3 ms-2 pt-1 pb-1 ps-5 pe-5">Lucha</span>
-          break;
-
-        default:
+          setType2('Lucha')
+          setTypeClass2('bg-fighting text-light rounded-3 pt-1 pb-1 ps-5 pe-5')
           break;
       }
-
-      // typeOutput3 = `<p><span class='${typeOutput1.props.class}'>${typeOutput1.props.children}</span></p><span class='${typeOutput1.props.class}' >${typeOutput2.props.children}</span>`
-      typeOutput3 = typeOutput1 + typeOutput2
-      // console.log("2 tipos", typeOutput3)
-      console.log(typeOutput3)
-    } catch (error) {
-      console.log(error)
     }
-  }
+    else {
+      // Primer set
+      const res1 = await getPokemonType(pokemon.types[0].type.url)
+      switch (res1.name) {
+        case 'normal':
+          setType1('Normal')
+          setTypeClass1('bg-normal text-light rounded-3 pt-1 pb-1 ps-5 pe-5')
+          break;
 
-  if (pokemon.types.length === 2) {
-    for (let i = 1; i < pokemon.types.length; i++) {
-      getTwoTypes();
-      break;
+        case 'fire':
+          setType1('Fuego')
+          setTypeClass1('bg-fire text-light rounded-3 pt-1 pb-1 ps-5 pe-5')
+          break;
+
+        case 'water':
+          setType1('Agua')
+          setTypeClass1('bg-water text-light rounded-3 pt-1 pb-1 ps-5 pe-5')
+          break;
+
+        case 'grass':
+          setType1('Planta')
+          setTypeClass1('bg-grass text-dark rounded-3 pt-1 pb-1 ps-5 pe-5')
+          break;
+
+        case 'flying':
+          setType1('Volador')
+          setTypeClass1('bg-flying text-light rounded-3 pt-1 pb-1 ps-5 pe-5')
+          break;
+
+        case 'poison':
+          setType1('Veneno')
+          setTypeClass1('bg-poison text-light rounded-3 pt-1 pb-1 ps-5 pe-5')
+          break;
+
+        case 'electric':
+          setType1('Electrico')
+          setTypeClass1('bg-electric text-light rounded-3 pt-1 pb-1 ps-5 pe-5')
+          break;
+
+        case 'ground':
+          setType1('Tierra')
+          setTypeClass1('bg-ground text-light rounded-3 pt-1 pb-1 ps-5 pe-5')
+          break;
+
+        case 'rock':
+          setType1('Roca')
+          setTypeClass1('bg-rock text-light rounded-3 pt-1 pb-1 ps-5 pe-5')
+          break;
+
+        case 'psychic':
+          setType1('Psiquico')
+          setTypeClass1('bg-psychic text-light rounded-3 pt-1 pb-1 ps-5 pe-5')
+          break;
+
+        case 'ice':
+          setType1('Hielo')
+          setTypeClass1('bg-ice text-light rounded-3 pt-1 pb-1 ps-5 pe-5')
+          break;
+
+        case 'bug':
+          setType1('Bicho')
+          setTypeClass1('bg-bug text-light rounded-3 pt-1 pb-1 ps-5 pe-5')
+          break;
+
+        case 'ghost':
+          setType1('Fantasma')
+          setTypeClass1('bg-ghost text-light rounded-3 pt-1 pb-1 ps-5 pe-5')
+          break;
+
+        case 'steel':
+          setType1('Acero')
+          setTypeClass1('bg-steel text-light rounded-3 pt-1 pb-1 ps-5 pe-5')
+          break;
+
+        case 'dragon':
+          setType1('Dragon')
+          setTypeClass1('bg-dragon text-light rounded-3 pt-1 pb-1 ps-5 pe-5')
+          break;
+
+        case 'dark':
+          setType1('Siniestro')
+          setTypeClass1('bg-dark text-light rounded-3 pt-1 pb-1 ps-5 pe-5')
+          break;
+
+        case 'fairy':
+          setType1('Hada')
+          setTypeClass1('bg-fairy text-light rounded-3 pt-1 pb-1 ps-5 pe-5')
+          break;
+
+        case 'fighting':
+          setType1('Lucha')
+          setTypeClass1('bg-fighting text-light rounded-3 pt-1 pb-1 ps-5 pe-5')
+          break;
+      }
     }
-  }
-  else {
-    getOneType();
   }
 
   return (
@@ -219,29 +322,7 @@ export const Pokemon = (props) => {
             </Card.Title>
             <Card.Text>
               <Row className="text-justify text-capitalize">
-                {/* {pokemon.types.map((type, idx) => {
-                  return (
-                    <div key={idx} className="pokemon-type-text col-sm-6 text-center">
-                      {type.type.name}
-                    </div>
-                  );
-                })} */}
-                {(() => {
-                  if (pokemon.types.length === 2) {
-                    // typeOutput3.map((type, idx) => {
-                    //   return(<div>1{type}</div>);
-                    // })
-                    Object.keys(typeOutput3).map((key,idx) => {
-                      return(
-                        <div>{key}</div>
-                      );
-                    })
-                  } else {
-                    return (
-                      <div>1</div>
-                    )
-                  }
-                })()}
+                <h6><span className={typeClass1}>{type1}</span> <span className={typeClass2}>{type2}</span></h6>
               </Row>
             </Card.Text>
             <Button variant="primary" className="mt-2">

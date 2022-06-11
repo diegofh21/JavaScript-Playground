@@ -31,7 +31,44 @@ export const getPokedexData = async (url) => {
 
 export async function getPokemonType(type) {
   try {
-    let url = `https://pokeapi.co/api/v2/type/${type}`
+    const res = await axios.get(type)
+    return res.data
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+export async function getPokeSkill(skill) {
+  try {
+    const res = await axios.get(skill)
+    return res.data
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+export async function getPokeCategory(category) {
+  try {
+    const res = await axios.get(category)
+    return res.data
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+export async function getPokeGender(pokemon) {
+  try {
+    let url = `https://pokeapi.co/api/v2/gender/?name=${pokemon}`
+    const res = await axios.get(url)
+    return res.data
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+export async function getPokeMoves(move) {
+  try {
+    let url = `https://pokeapi.co/api/v2/move/${move}`
     const res = await axios.get(url)
     return res.data
   } catch (error) {

@@ -171,7 +171,7 @@ nav {
     border-radius: 3px;
 }
 
-/* Colores tipos de pokémon */ 
+/* Colores tipos de pokémon */
 
 .bg-fire {
     background: #FD7D24;
@@ -247,5 +247,10 @@ nav {
 }
 
 .bg-pokemon {
-    background: #F2F2F2;
+    background: #d5d5d5;
+}
+
+.sombra
+{
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
 }

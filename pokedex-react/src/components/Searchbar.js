@@ -1,19 +1,21 @@
 import React, { useState, useEffect } from 'react'
-import { getPokemon } from '../api/request'
 import { Container, FormControl, Button, Row, Col } from 'react-bootstrap'
 
-export const Searchbar = () => {
+export const Searchbar = (props) => {
+
+  const { onSearch } = props;
   const [search, setSearch] = useState('')
-  const [pokemon, setPokemon] = useState();
 
   const onChange = (e) => {
-    setSearch(e.target.value)
-  }
+    setSearch(e.target.value);
+    if (e.target.value.length === 0) {
+      onSearch(null);
+    }
+  };
 
   const onClick = async (e) => {
-    const data = await getPokemon(search);
-    setPokemon(data)
-  }
+    onSearch(search.toLowerCase());
+  };
 
   useEffect(() => {
     

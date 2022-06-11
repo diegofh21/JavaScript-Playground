@@ -3,9 +3,6 @@ import './index.css';
 import { Header } from './components/Header'
 import { Searchbar } from './components/Searchbar';
 import { Pokedex } from './components/Pokedex';
-import { Pokemon } from './components/Pokemon'
-import { Home } from './views/Home/Home';
-import { PokemonDetails } from './views/PokemonDetails/PokemonDetails';
 
 import { getPokedexData, getPokemons, getPokemon } from "./api/request";
 
@@ -39,6 +36,7 @@ function App() {
     if (!searching) {
       initPokedex();
     }
+    document.title = "Pokedex App"
   }, [page]);
 
   const onSearch = async (pokemon) => {
@@ -67,8 +65,8 @@ function App() {
       <Header></Header>
       <Searchbar onSearch={onSearch} />
       {notFound ? (
-        <div className="not-found-text">
-          No se encontro el Pokemon que buscabas 😭
+        <div className="not-found-text text-center mt-5">
+          <h3>No se encontro el Pokemon que buscabas 😭</h3>
         </div>
       ) : (
         <Pokedex
