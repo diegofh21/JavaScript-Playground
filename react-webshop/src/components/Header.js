@@ -1,11 +1,11 @@
-import React from 'react';
+import React from 'react'
 import { Nav, Navbar, Container } from 'react-bootstrap';
 import { Link } from 'react-router-dom'
 
 export const Header = () => {
 	return (
 		<>
-			<Navbar bg="dark" variant="dark">
+			<Navbar bg='dark' variant='dark'>
 				<Container fluid>
 					<Navbar.Brand>
 						WebShop
@@ -17,14 +17,16 @@ export const Header = () => {
 					</Nav>
 					<Nav className="ms-auto">
 						<Nav.Link>
-							<Link>sdfsdfsdf</Link>
+							<Link to="/" className='text-decoration-none text-light'>Catalogo</Link>
 						</Nav.Link>
 						<Nav.Link>
-							<Link>sdfsdfsdf</Link>
+							<Link to="/" className='text-decoration-none text-light'>Cerrar sesion</Link>
 						</Nav.Link>
 					</Nav>
 				</Container>
 			</Navbar>
 		</>
-	);
+	)
 }
+
+export default Header
