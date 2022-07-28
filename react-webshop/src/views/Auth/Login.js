@@ -5,6 +5,8 @@ import { makeLoginData } from './../../api/request';
 import { AuthContext } from './../../context/AuthContext';
 import { Button } from 'react-bootstrap';
 
+import { Header } from '../../components/Header'
+
 export default function Login() {
   const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState("");
@@ -42,6 +44,7 @@ export default function Login() {
 
   return (
     <>
+      <Header></Header>
       <div className="container">
         <div className="row">
           <div className="form-group">

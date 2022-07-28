@@ -8,7 +8,7 @@ export const Header = () => {
 		<>
 			<Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
 				<Container fluid>
-					<Navbar.Brand href="#home">Garantias Multimax</Navbar.Brand>
+					<Navbar.Brand href="/">Garantias Multimax</Navbar.Brand>
 					<Navbar.Toggle aria-controls="responsive-navbar-nav" />
 					<Navbar.Collapse id="responsive-navbar-nav">
 						<Nav className="me-auto">

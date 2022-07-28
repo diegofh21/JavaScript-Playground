@@ -2,6 +2,7 @@ import React, { useEffect, useReducer } from 'react';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Home from './views/Home/Home';
+import GuestHome from './views/GuestHome/GuestHome';
 import Login from './views/Auth/Login';
 import Register from './views/Auth/Register';
 
@@ -91,7 +92,8 @@ export default function App() {
                 <Routes>
                   {
                     (loginState.token === null) ? <>
-                      <Route path="/" element={<Login />} />
+                      <Route path="/" element={<GuestHome />} />
+                      <Route path="/login" element={<Login />} />
                       <Route path="/register" element={<Register />} />
                       <Route path="*" element={
                         <h1 className='text-center mt-5'>404 La pagina que estas buscando no esta disponible 😥</h1>

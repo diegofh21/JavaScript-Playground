@@ -17,7 +17,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('/producto/:codigo', (req, res) => {
   const prod = req.params.codigo;
-  const sqlSelect = "SELECT * FROM productos WHERE codigo = ?"
+  const sqlSelect = "SELECT * FROM productos WHERE UPPER(codigo) = ?"
 
   db.query(sqlSelect, prod, (err, result) => {
     if (err) {
@@ -28,6 +28,10 @@ app.get('/producto/:codigo', (req, res) => {
     }
   })
 });
+
+app.get('/', (req, res) => {
+  res.send("Hello world")
+})
 
 app.listen(3001, () => {
   console.log("server is running on port 3001")

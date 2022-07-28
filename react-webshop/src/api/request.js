@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 export async function makeRegisterData(jsn) {
     try {
         const res = await axios.post(

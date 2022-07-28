@@ -19,7 +19,7 @@ export default function Home() {
 
   const Buscar = () => {
     // console.log(buscarProd)
-    Axios.get(`http://localhost:3001/producto/${buscarProd}`).then((res) =>{
+    Axios.get(`http://10.10.29.85:3001/producto/${buscarProd}`).then((res) =>{
       console.log(res.data[0]);
       setCodigo(res.data[0].codigo);
       setMarca(res.data[0].marca);
@@ -42,7 +42,7 @@ export default function Home() {
 
       {/* HACER LOS CONTAINER CON BREAKPOINTS PARA VERSION MOVIL */}
 
-      <div className="container mt-5">
+      <div className="container mt-5 d-none este-es-xs">
         <div className="row">
             <div className="col-sm-4 text-end pt-2">
               <label htmlFor="buscarProducto">Código de Producto:</label>
@@ -58,44 +58,60 @@ export default function Home() {
         </div>
       </div>
 
+      <div className="container mt-5 d-sm-block este-es-sm">
+        <div className="row">
+            <div className="col text-end pt-2">
+              <label htmlFor="buscarProducto">Código de Producto:</label>
+            </div>
+            <div className="col">
+              <input type="text" name="buscarProducto" id="producto" className="form-control" placeholder="Ingrese el código del producto" onChange={(e) => {
+                setBuscarProd(e.target.value);
+              }}/>
+            </div>
+            <div className="col">
+              <button className="btn btn-success" onClick={Buscar}>Buscar <img src={clock} alt="Clock" style={{width: "25px"}} className="ms-2"/></button>
+            </div>
+        </div>
+      </div>
+
       <div className="container mt-5 bg-red shadow w-50 p-4">
         <div className="row">
-          <div className="col-sm-6 text-center">
+          <div className="col text-center">
             <h4 className="pe-5">Marca:</h4>
           </div>
-          <div className="col-sm-6">
+          <div className="col">
             <h5 className="text-start">{marca}</h5>
           </div>
         </div>
         <div className="row">
-          <div className="col-sm-6 text-center">
+          <div className="col text-center">
             <h4 className="pe-5">Código:</h4>
           </div>
-          <div className="col-sm-6">
+          <div className="col">
             <h5 className="text-start">{codigo}</h5>
           </div>
         </div>
         <div className="row">
-          <div className="col-sm-6 text-center">
+          <div className="col text-center">
             <h4 className="pe-5">Producto:</h4>
           </div>
-          <div className="col-sm-6">
+          <div className="col">
             <h5 className="text-start">{descripcion}</h5>
           </div>
         </div>
         <div className="row">
-          <div className="col-sm-6 text-center">
+          <div className="col text-center">
             <h4 className="pe-5">Tiempo de garantía:</h4>
           </div>
-          <div className="col-sm-6">
+          <div className="col">
             <h5 className="text-start">{tiempo}</h5>
           </div>
         </div>
         <div className="row">
-          <div className="col-sm-6 text-center">
+          <div className="col text-center">
             <h4 className="pe-5">Centro de Servicio:</h4>
           </div>
-          <div className="col-sm-6">
+          <div className="col">
             <h5 className="text-start">{centro}</h5>
           </div>
         </div>
