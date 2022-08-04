@@ -26,6 +26,13 @@ export default function Home() {
       setDescripcion(res.data[0].producto);
       setTiempo(res.data[0].tiempo_garantia)
       setCentro(res.data[0].centro_servicio)
+    }).catch((error) => {
+      alert("El código ingresado no existe o está errado, verifique e intente nuevamente.")
+      setMarca('');
+      setCodigo('');
+      setDescripcion('');
+      setTiempo('');
+      setCentro('');
     })
   }
 
@@ -40,28 +47,10 @@ export default function Home() {
         </div>
       </div>
 
-      {/* HACER LOS CONTAINER CON BREAKPOINTS PARA VERSION MOVIL */}
-
-      <div className="container mt-5 d-none este-es-xs">
-        <div className="row">
-            <div className="col-sm-4 text-end pt-2">
-              <label htmlFor="buscarProducto">Código de Producto:</label>
-            </div>
-            <div className="col-sm-4">
-              <input type="text" name="buscarProducto" id="producto" className="form-control" placeholder="Ingrese el código del producto" onChange={(e) => {
-                setBuscarProd(e.target.value);
-              }}/>
-            </div>
-            <div className="col-sm-4">
-              <button className="btn btn-success" onClick={Buscar}>Buscar <img src={clock} alt="Clock" style={{width: "25px"}} className="ms-2"/></button>
-            </div>
-        </div>
-      </div>
-
-      <div className="container mt-5 d-sm-block este-es-sm">
+      <div className="container mt-5 d-sm-block">
         <div className="row">
             <div className="col text-end pt-2">
-              <label htmlFor="buscarProducto">Código de Producto:</label>
+              <label htmlFor="buscarProducto"><strong>Código de Producto:</strong></label>
             </div>
             <div className="col">
               <input type="text" name="buscarProducto" id="producto" className="form-control" placeholder="Ingrese el código del producto" onChange={(e) => {
@@ -69,7 +58,7 @@ export default function Home() {
               }}/>
             </div>
             <div className="col">
-              <button className="btn btn-success" onClick={Buscar}>Buscar <img src={clock} alt="Clock" style={{width: "25px"}} className="ms-2"/></button>
+              <button className="btn btn-success" onClick={Buscar}>Buscar tiempo de garantía</button>
             </div>
         </div>
       </div>

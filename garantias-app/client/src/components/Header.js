@@ -6,15 +6,15 @@ export const Header = () => {
 
 	return (
 		<>
-			<Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+			<Navbar collapseOnSelect expand="lg" bg="primary" variant="dark">
 				<Container fluid>
-					<Navbar.Brand href="/">Garantias Multimax</Navbar.Brand>
-					<Navbar.Toggle aria-controls="responsive-navbar-nav" />
-					<Navbar.Collapse id="responsive-navbar-nav">
+					<Navbar.Brand href="/">Multimax Maracaibo</Navbar.Brand>
+					{/* <Navbar.Toggle aria-controls="responsive-navbar-nav" /> */}
+					{/* <Navbar.Collapse id="responsive-navbar-nav">
 						<Nav className="me-auto">
 							<Nav.Link href="/">Inicio</Nav.Link>
 						</Nav>
-					</Navbar.Collapse>
+					</Navbar.Collapse> */}
 				</Container>
 			</Navbar>
 		</>
