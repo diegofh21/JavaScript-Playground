@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import Axios from 'axios';
 import mmxLogo from '../../img/MULTIMAX-MCBO.jpeg'
-import clock from '../../img/clock-png.png'
 
 import Header from '../../components/Header';
 
@@ -16,24 +15,51 @@ export default function Home() {
   const [descripcion, setDescripcion] = useState('');
   const [tiempo, setTiempo] = useState('');
   const [centro, setCentro] = useState('');
+  const [avisoProd, setAvisoProd] = useState('');
+  const [aviso, setAviso] = useState('');
 
   const Buscar = () => {
-    // console.log(buscarProd)
-    Axios.get(`http://10.10.29.85:3001/producto/${buscarProd}`).then((res) =>{
-      console.log(res.data[0]);
+    Axios.get(`http://10.10.29.85:3001/producto/${buscarProd}`).then((res) => {
+      console.log(res.data.status)
       setCodigo(res.data[0].codigo);
       setMarca(res.data[0].marca);
       setDescripcion(res.data[0].producto);
       setTiempo(res.data[0].tiempo_garantia)
       setCentro(res.data[0].centro_servicio)
+      setAvisoProd('')
+      if ((res.data[0].tiempo_garantia === '' || res.data[0].centro_servicio === '')) {
+        setAviso('**En caso de que el producto consultado no tenga tiempo de garantía y/o centro de servicio por favor consultar la información que requiera con el departamento**')
+      }
+      else if (res.data[0].tiempo_garantia === '') {
+        setTiempo('S/I')
+      }
+      else if (res.data[0].centro_servicio === '') {
+        setCentro('S/I')
+      }
+      else {
+        setAviso('')
+      }
     }).catch((error) => {
-      alert("El código ingresado no existe o está errado, verifique e intente nuevamente.")
+      if (buscarProd === '') {
+        setAvisoProd('**No ha ingresado ningún código, por favor ingrese uno e intente nuevamente.**')
+        setAviso('')
+      }
+      else {
+        setAvisoProd("**El código ingresado no existe o está errado, verifique e intente nuevamente.**")
+        setAviso('')
+      }
       setMarca('');
       setCodigo('');
       setDescripcion('');
       setTiempo('');
       setCentro('');
     })
+  }
+
+  function CallBuscar(e) {
+    if (e.key === "Enter") {
+      Buscar();
+    }
   }
 
   return (
@@ -49,17 +75,23 @@ export default function Home() {
 
       <div className="container mt-5 d-sm-block">
         <div className="row">
-            <div className="col text-end pt-2">
-              <label htmlFor="buscarProducto"><strong>Código de Producto:</strong></label>
-            </div>
-            <div className="col">
-              <input type="text" name="buscarProducto" id="producto" className="form-control" placeholder="Ingrese el código del producto" onChange={(e) => {
-                setBuscarProd(e.target.value);
-              }}/>
-            </div>
-            <div className="col">
-              <button className="btn btn-success" onClick={Buscar}>Buscar tiempo de garantía</button>
-            </div>
+          <div className="col text-end pt-2">
+            <label htmlFor="buscarProducto"><strong>Código de Producto:</strong></label>
+          </div>
+          <div className="col">
+            <input type="text" name="buscarProducto" id="producto" className="form-control" placeholder="Ingrese el código del producto" onChange={(e) => {
+              setBuscarProd(e.target.value);
+            }} onKeyPress={(e) => CallBuscar(e)} />
+          </div>
+          <div className="col">
+            <button className="btn btn-success" onClick={Buscar}>Buscar tiempo de garantía</button>
+          </div>
+        </div>
+      </div>
+
+      <div className="row mt-4">
+        <div className="col text-center">
+          <h6 className="text-danger">{avisoProd}</h6>
         </div>
       </div>
 
@@ -102,6 +134,12 @@ export default function Home() {
           </div>
           <div className="col">
             <h5 className="text-start">{centro}</h5>
+          </div>
+        </div>
+
+        <div className="row mt-4">
+          <div className="col text-center">
+            <h6 className="text-danger">{aviso}</h6>
           </div>
         </div>
       </div>
